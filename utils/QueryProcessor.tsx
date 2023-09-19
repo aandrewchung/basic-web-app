@@ -1,3 +1,18 @@
+// Function to check if a number is prime
+function isPrime(num: number): boolean {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+  if (num % 2 === 0 || num % 3 === 0) return false;
+
+  let i = 5;
+  while (i * i <= num) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+    i += 6;
+  }
+
+  return true;
+}
+
 export default function QueryProcessor(query: string): string {
   const lowerQuery = query.toLowerCase();
 
@@ -102,6 +117,32 @@ export default function QueryProcessor(query: string): string {
     
     
   } 
+
+
+  if (query.match(/Which of the following numbers are primes:\s*((?:\d+\s*,\s*)+\d+)\s*\?/)) {
+
+    const match = query.match(/Which of the following numbers are primes:\s*((?:\d+\s*,\s*)+\d+)\s*\?/);
+
+    if (match) {
+      const numbersString = match[1];
+      const numbers = numbersString.split(',').map(Number);
+    
+
+    
+      // Find prime numbers in the list
+      const primeNumbers = numbers.filter(num => isPrime(num));
+    
+      if (primeNumbers.length > 0) {
+        return primeNumbers.join(', ');
+      } else {
+        return "None of the numbers are prime.";
+      }
+    } else {
+      return "Invalid format. Please provide a valid query.";
+    }
+    
+    
+  }
 
   
 
