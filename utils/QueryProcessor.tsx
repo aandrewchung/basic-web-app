@@ -57,6 +57,25 @@ export default function QueryProcessor(query: string): string {
     
   }
 
+  if (query.match(/What is (\d+) multiplied by (\d+)\?/)) {
+
+    const match = query.match(/What is (\d+) multiplied by (\d+)\?/);
+
+    if (match) {
+      const num1 = parseInt(match[1]);
+      const num2 = parseInt(match[2]);
+    
+      const result = num1 * num2;
+    
+      return result.toString();
+    } else {
+      return "Invalid format. Please provide a valid multiplication query.";
+    }
+    
+    
+  }
+
+
   if (query.match(/Which of the following numbers is both a square and a cube:\s*((?:\d+\s*,\s*)+\d+)\s*\?/)) {
 
     const match = query.match(/Which of the following numbers is both a square and a cube:\s*((?:\d+\s*,\s*)+\d+)\s*\?/);
