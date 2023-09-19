@@ -165,6 +165,23 @@ export default function QueryProcessor(query: string): string {
 
   
 
+  if (query.match(/What is (\d+) plus (\d+) plus (\d+)\?/)) {
+    const match = query.match(/What is (\d+) plus (\d+) plus (\d+)\?/);
+
+    if (match) {
+      const num1 = parseInt(match[1]);
+      const num2 = parseInt(match[2]);
+      const num3 = parseInt(match[3]);
+    
+      const result = num1 + num2 + num3;
+    
+      return result.toString();
+    } else {
+      return "Invalid format. Please provide a valid addition query.";
+    }
+    
+    
+  }
 
 
   return "";
