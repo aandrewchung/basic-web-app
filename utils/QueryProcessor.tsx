@@ -15,7 +15,7 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (lowerQuery.match("what is your name?")) {
+  if (query.match("What is your name?")) {
     return (
       "andrew"
     );
