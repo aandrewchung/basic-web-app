@@ -23,4 +23,9 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("Your Andrew ID is awchung");
     });
+
+
+    test('should answer name', () => {
+        expect(QueryProcessor("What is your name?")).toEqual("andrew");
+    });
 });
