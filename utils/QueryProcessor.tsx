@@ -184,5 +184,22 @@ export default function QueryProcessor(query: string): string {
   }
 
 
+  if (query.match(/What is (\d+) to the power of (\d+)\?/)) {
+    const match = query.match(/What is (\d+) to the power of (\d+)\?/);
+
+    if (match) {
+      const base = parseInt(match[1]);
+      const exponent = parseInt(match[2]);
+    
+      const result = Math.pow(base, exponent);
+    
+      return result.toString();
+    } else {
+      return "Invalid format. Please provide a valid power query.";
+    }
+    
+    
+  }
+
   return "";
 }
