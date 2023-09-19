@@ -1,3 +1,5 @@
+//USING CHATGPT FOR isPrime() fn below
+
 // Function to check if a number is prime
 function isPrime(num: number): boolean {
   if (num <= 1) return false;
@@ -64,6 +66,23 @@ export default function QueryProcessor(query: string): string {
       const num2 = parseInt(match[2]);
     
       const result = num1 + num2;
+    
+      return result.toString();
+    } else {
+      return "Invalid format. Please provide a valid addition query.";
+    }
+    
+  }
+
+  if (query.match(/What is (\d+) minus (\d+)\?/)) {
+
+    const match = query.match(/What is (\d+) minus (\d+)\?/);
+
+    if (match) {
+      const num1 = parseInt(match[1]);
+      const num2 = parseInt(match[2]);
+    
+      const result = num1 - num2;
     
       return result.toString();
     } else {
